@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+	<style>
+	.ct-series-a .ct-line {
+  /* Set the colour of this series line */
+  stroke: blue;
+  /* Control the thikness of your lines */
+  stroke-width: 2px;
+  /* Create a dashed line with a pattern */
+  /*stroke-dasharray: 10px 20px;*/
+}
+.ct-series-a .ct-point {
+  /* Colour of your points */
+  stroke: green;
+  /* Size of your points */
+  stroke-width: 1px;
+  /* Make your points appear as squares */
+  stroke-linecap: square;
+}
+</style>
+  </head>
+  <body>
+  
+	<form action="" method="post">
+	Masukan Ticker<br />
+	<input type="text" name="ticker" />
+	<p><input type="submit" value="Search Ticker" ></p>
+	</form>
+	
+	<div class="ct-chart ct-perfect-fourth"></div>
+	<script>
+		var data = {
+		  // A labels array that can contain any sort of values
+		  //labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+		  // Our series array that contains series objects or in this case series data arrays
+		  series: [
+			{{data}}
+		  ]
+		};
+		var options = {
+		  width: 800,
+		  height: 600
+		  		  
+		};
+			 
+		// Create a new line chart object where as first parameter we pass in a selector
+		// that is resolving to our chart container element. The Second parameter
+		// is the actual data object.
+		new Chartist.Line('.ct-chart', data,options);	
+	</script>	
+
+	
+
+  </body>
+</html>
+
