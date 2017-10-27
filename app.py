@@ -10,15 +10,19 @@ def getprice(ticker):
     url="https://www.google.com/finance/historical?output=csv&q="+ticker
     stock = ticker+".csv"
     urllib.request.urlretrieve(url,stock)
-    df = pd.read_csv(stock).iloc[::-1].iloc[-30:]
+    df = pd.read_csv(stock).iloc[::-1].iloc[-90:]
     l = list(df['Close'])
     abbr_to_num = {name: num for num, name in enumerate(calendar.month_abbr) if num}
     tanggal = df['Date']
     date = []
-    c = 0
-    for i in tanggal:
-        temp = i.split("-")
-        date.append(int(temp[0]))
+    s = " "
+    for i in range(len(tanggal)):
+        temp = tanggal[i].split("-")
+        if temp[1]!=s:
+            s = temp[1]
+            date.append(temp[1])
+        else:
+            date.append(" ")
     return l,date
 
 
